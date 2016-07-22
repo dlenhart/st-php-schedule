@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block page_title %}{{ title }}{% endblock %}
+
+{% block content %}
+	<div id='servers'><div id='loading2' class='' style='color: white'><h3 style='color: yellow'>LOADING ...</h3></div></div>
+	
+	<script>
+//Ajax polling for URL Avail
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
+function GetTodayDate() {
+   var tdate = new Date();
+   var dd = tdate.getDate(); //yields day
+   var MM = tdate.getMonth(); //yields month
+   var yyyy = tdate.getFullYear(); //yields year
+   //var xxx = dd + "-" +( MM+1) + "-" + yyyy;
+
+   var hh = tdate.getHours(); 
+   var mm = addZero(tdate.getMinutes());
+   var ss = addZero(tdate.getSeconds());
+   var xxx = hh + ":" + mm + ":" + ss;
+   return xxx;
+}
+
+(function(b){
+    b(document).ready(function()
+    {
+        //var now = new Date();
+        b.ajaxSetup(
+        {
+            cache: false,
+            beforeSend: function() {
+                //$('#servers').hide().fadeOut("fast");
+                //$('#idle').hide();
+				$('#loading2').show();
+                //$('#loading').show();
+            },
+            complete: function() {
+                //$('#loading').hide();
+                //$('#idle').show();
+                b('#servers').show().fadeIn("slow");
+                //b('#endpoints').show().fadeIn("slow");
+            },
+            success: function() {
+                $('#loading').hide();
+                b('#servers').show().fadeIn("slow");
+                $('#idle').html("IDLE - Last Poll: " + GetTodayDate()).show();
+                //b('#endpoints').show().fadeIn("slow");
+            }
+        });
+        var $container = b("#servers");
+        //var $container2 = b("#endpoints");
+        $container.load("get.php").fadeIn("slow");
+        //$container2.load("php/web_stats/poll_endpoints.php").fadeIn("slow");
+        var refreshId = setInterval(function()
+        {
+            $container.load('get.php').fadeIn("slow");
+            //$container2.load('php/web_stats/poll_endpoints.php').fadeIn("slow");
+        }, 5000);
+    });
+})(jQuery);</script>
+{% endblock %}
