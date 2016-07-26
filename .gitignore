@@ -2,7 +2,7 @@
 /public/uploads/*
 /logs/*.txt
 /logs/job_logs/*.txt
-/data/*
+/data/*.sqlite
 /jobs/job-hehe.php
 
 # Windows image file caches
