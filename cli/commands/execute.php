@@ -5,7 +5,7 @@ File:		execute.php
 Desc:		Executes jobs in queue.
 Date:		7/22/16
 Version:	1.0.0
-Use:		e.g. C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\exec.php execute
+Use:		e.g. C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\st-php-schedule\cli\stphpschedule.php execute
 */
 
 function execute_queue(){

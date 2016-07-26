@@ -3,9 +3,9 @@
 Author:		Drew D. Lenhart
 File:		stphpschedule.php
 Desc:		CLI menu interface.
-Date:		7/22/16
+Date:		7/26/16
 Version:	1.0.0
-Use:		e.g. C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\exec.php execute
+Use:		e.g. C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\st-php-schedule\cli\stphpschedule.php execute
 */
 
 include 'lib/st-php-logger.php';

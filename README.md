@@ -1,9 +1,58 @@
 st-phpschedule
 ===============
 
-An experiment in scheduling tasks in PHP and a little bit of Python.
+This is an experiment in creating a task scheduler / queue system in PHP and a little bit of Python.  This project was to help me think differently about creating applications and this app should not be used on any production systems.  There is no authentication and little thought of security.  The command line interface is literally me re-inventing the wheel.  There are frameworks such as Symphony that do this better!  The dashboard interface is built on Slim 3.  I have only tested this on Windows, but should work just fine on other systems.
 
--This is a work in progress, dont judge.
+-This is an experiment, dont judge.
+
+#Required
+
+-PHP 5.5.12 + ( this is all I've tested on currently )
+-PHP PDO extension
+-Composer
+-Python 3.5.2 +
+
+#Install
+
+1.  Download code.
+
+2.  Run the **builddb** command via cli e.g. **C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\st-php-schedule\cli\stphpschedule.php builddb**
+
+3.  If named the database durring **builddb** command, edit **config/config.php** with database name.
+
+4.  The **builddb** command will build a SQLite database as well as a couple dummy jobs to get started.
+
+5.  Run **composer install** in application root.  This will install the Slim app dependencies.
+
+6.  Start PHP dev server on the public folder:  **php -S localhost:8000 -t public**.
+
+7.  Via CLI, you can run various commands to check JOBS table ( if a job is ready to run ) or execute any job thats in the queue.  Type **path/to/php.exe -f C:\phpcli\st-php-schedule\cli\stphpschedule.php list** for available commands.
+
+8.  Run **cli/listen.py** so the Jobs table is checked regularly and jobs are executed.
+
 
 #Website
 www.drewlenhart.com
+
+#License
+MIT License
+
+Copyright (c) 2016 Drew D. Lenhart
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
