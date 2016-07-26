@@ -2,7 +2,7 @@
 /public/uploads/*
 /logs/*
 /data/*
-/jobs/*
+/jobs/job-hehe.php
 
 # Windows image file caches
 Thumbs.db
