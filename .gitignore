@@ -1,6 +1,7 @@
 /vendor/
 /public/uploads/*
-/logs/*
+/logs/*.txt
+/logs/job_logs/*.txt
 /data/*
 /jobs/job-hehe.php
 
