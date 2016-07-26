@@ -3,10 +3,10 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 //HOME
-$app->get('/', 'BL00B1RD\Controller\HomepageController:home');
+$app->get('/', 'stphpschedule\Controller\HomepageController:home');
 
-//PAGES -- Pages stored in pages table.
-//$app->get('/pages/{page}','BL00B1RD\Controller\HomepageController:pages');
+//QUEUE - queries queue table.
+$app->get('/boxes/queue','stphpschedule\Controller\HomepageController:queue');
 
-//POSTS -- Posts stored in posts table.
-//$app->get('/posts/{id}','BL00B1RD\Controller\HomepageController:posts');
+//JOBS - queries job table.
+$app->get('/boxes/jobs','stphpschedule\Controller\HomepageController:job');

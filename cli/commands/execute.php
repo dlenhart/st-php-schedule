@@ -1,10 +1,16 @@
 <?php  
-//execute - executes jobs in the QUEUE
-//Checks if theres Jobs in the Queue and executes.
+/*
+Author:		Drew D. Lenhart
+File:		execute.php
+Desc:		Executes jobs in queue.
+Date:		7/22/16
+Version:	1.0.0
+Use:		e.g. C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\exec.php execute
+*/
 
 function execute_queue(){
 	$time = date('d-M-Y');
-	if(DEBUG) $qlog = new snowytech\stphplogger\logWriter('../logs/queue-log-' . $time . '.txt');
+	if(DEBUG) $qlog = new snowytech\stphplogger\logWriter('../logs/execute-queue-' . $time . '.txt');
 	
 	//Look for any kind of entry in QUEUE & execute;
 	

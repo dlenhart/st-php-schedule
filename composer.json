@@ -1,8 +1,8 @@
 {
-    "name": "drew",
-    "description": "test test",
-    "keywords": ["slimframework", "starter"],
-    "homepage": "https://github.com/napolux/helloslim3",
+    "name": "stphpschedule",
+    "description": "A simple PHP task scheduler",
+    "keywords": ["PHP", "tasks"],
+    "homepage": "https://github.com/snowytech",
     "license": "MIT",
     "authors": [
         {
@@ -15,20 +15,19 @@
         "php": ">=5.5.0",
         "slim/slim": "^3.4",
         "slim/php-view": "^2.0",
-        "monolog/monolog": "^1.17",
         "slim/twig-view": "^2.1",
         "slim/http-cache": "^0.3.0",
 		"illuminate/database": "*"
     },
     "autoload": {
         "psr-4": {
-            "BL00B1RD\\": "src"
+            "stphpschedule\\": "src"
         },
 		"files": [
 			"config/lite.database.php",
 			"config/config.php",
-			"src/Models/articles.php",
-			"src/Models/pages.php"
+			"src/Models/jobs.php",
+			"src/Models/queue.php"
 		]
     }
 }

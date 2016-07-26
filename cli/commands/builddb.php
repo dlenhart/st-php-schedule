@@ -1,5 +1,13 @@
 <?php  
-//builddb - create database via cli
+/*
+Author:		Drew D. Lenhart
+File:		builddb.php
+Desc:		Build sqlite database.
+Date:		7/22/16
+Version:	1.0.0
+Use:		e.g. C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\exec.php builddb
+*/
+
 require 'install.php';
 
 function build_database(){

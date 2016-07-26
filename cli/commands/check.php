@@ -1,6 +1,13 @@
 <?php  
-//execute - checks time interval from list of jobs & inserts entry into QUEUE
-include '../lib/database.class.php';
+/*
+Author:		Drew D. Lenhart
+File:		check.php
+Desc:		Checks runtimes and inserts job into queue.
+Date:		7/22/16
+Version:	1.0.0
+Use:		e.g. C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\exec.php check
+*/
+include 'lib/database.class.php';
 include 'lib/stphpschedule.class.php';
 
 function check(){
@@ -8,7 +15,7 @@ function check(){
 	echo "Looking for jobs and adding to queue\n";
 	
 	$times = date('d-M-Y');
-	if(DEBUG) $qlog = new snowytech\stphplogger\logWriter('../logs/log-' . $times . '.txt');
+	if(DEBUG) $qlog = new snowytech\stphplogger\logWriter('../logs/check-queue-' . $times . '.txt');
 	$check = new snowytech\stphpschedule\schedule();
 	//Goes through whole Jobs table and checks interval!	
 	$db = db::getInstance();
@@ -27,7 +34,6 @@ function check(){
 		
 		//Need to first check if the "In QUEUE" flag is set, this means its in the queue
 		if($in_queue != 0){
-			
 			if( $r ) {
 				echo "executed - " . $job_name . "\n";
 				$count = time();

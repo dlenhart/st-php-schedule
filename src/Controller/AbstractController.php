@@ -1,5 +1,5 @@
 <?php
-namespace BL00B1RD\Controller;
+namespace stphpschedule\Controller;
 
 use Slim\Views\Twig as TwigViews;
 

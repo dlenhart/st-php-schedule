@@ -1,1 +1,0 @@
-php -f C:\phpcli\cli\stphpschedule.php add

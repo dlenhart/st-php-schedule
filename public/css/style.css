@@ -1,11 +1,5 @@
 /*
-Theme Name: ddlTheme
-Theme URI: http://www.drewlenhart.com/downloads/
-Description: A lightweight Bootstrap theme for a small blog.
-Author: Drew D. Lenhart
-Author URI: http://www.drewlenhart.com
-Version: 1.0
-Tags: responsive, white, black, bootstrap, jquery
+
 */
 
 body {
@@ -16,6 +10,33 @@ body {
 td{
 	padding: 5px !important;
 }
+
+.main_container{
+	margin-left: 4%;
+	margin-right: 4%;
+}
 .compImg {
     max-width:100%
+}
+
+.st_boxes{
+	background-color: black;
+	padding: 5px;
+}
+
+.box_t{
+	background-color: green;
+	color: black;
+	font-size: 18px;
+}
+
+.box_c{
+
+	border: 2px solid green;
+	margin-top: 2%;
+	
+}
+
+.footertxt{
+	margin-top: 2%
 }

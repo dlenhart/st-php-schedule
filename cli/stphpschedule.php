@@ -8,17 +8,14 @@ Version:	1.0.0
 Use:		e.g. C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\exec.php execute
 */
 
-include '../lib/st-php-logger.php';
-include '../lib/config.php';
+include 'lib/st-php-logger.php';
+include '../config/config.php';
 
 //Include command directory
 foreach (glob("commands/*.php") as $filename)
 {
     include $filename;
 }
-
-$time = date('d-M-Y');
-//$log = new snowytech\stphplogger\logWriter('../logs/log-' . $time . '.txt');
 
 //Only grab one argument. switch to appropriate function. Quasi menu system.
 if (isset($argv[1])){
@@ -45,6 +42,5 @@ if (isset($argv[1])){
 			echo "command not found.  type: php exec.php 'list' for a list of commands.";
 	}
 }else{ 
-	echo "No arguments, type: php exec.php 'list' for a list of commands.\n"; 
-	$log->error('no args');
+	echo "No arguments, type: php stphpschedule.php 'list' for a list of commands.\n"; 
 }

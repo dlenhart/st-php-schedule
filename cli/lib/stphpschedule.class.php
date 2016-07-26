@@ -1,4 +1,8 @@
-<?php 
+<?php
+/** 
+* st-php-schedule - ddl
+*/
+
 namespace snowytech\stphpschedule;
 
 class schedule {

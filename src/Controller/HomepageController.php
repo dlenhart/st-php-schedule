@@ -1,64 +1,41 @@
 <?php
-namespace BL00B1RD\Controller;
+namespace stphpschedule\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-use BL00B1RD\Model\Articles;
-use BL00B1RD\Model\Pages;
+use stphpschedule\Model\Jobs;
+use stphpschedule\Model\Queue;
 
 /**
  * Class HomepageController
- * @package BL00B1RD\Controller
+ * @package stphpschedule\Controller
  */
 class HomepageController extends AbstractController
 {
     public function home(Request $request, Response $response, $args)
     {
-		//List all articles at this point
-		//$posts = Articles::orderBy('timestamp', 'desc')->get(); 
-		$body = $this->view->fetch('blog_home.html');
+		$body = $this->view->fetch('home_interface.html');
 
         return $response->write($body);
     }
 	
-	/*public function pages(Request $request, Response $response, $args)
+	public function queue(Request $request, Response $response, $args)
     {
-		$pages = New Pages;
-		//$pages = Pages::where('slug', '=', $page)->get();
-		$page = $request->getAttribute('page');
-		
-		$pages = Pages::find($page);
-		$navigation = listPages('all');
-		if (! $pages instanceof Pages) {
-			$msg = "not found";
-			$body = $this->view->fetch('not_found.html', array('noFind' => $msg, 'nav' => $navigation));
-		}else{
-			$body = $this->view->fetch('pages.html', array('page_det' => $pages, 'nav' => $navigation));
-		}
-		
-		return $response->write($body);
-	}
-	
-	public function posts(Request $request, Response $response, $args)
-    {
-		$post = Articles::find($id);
-		$navigation = listPages('all');
+		$que = New Queue;
+		$que = Queue::all();
+		$body = $this->view->fetch('home_queue.html', array('qItems' => $que));
 
-		if (! $post instanceof Articles) {
-			$msg = "not found";
-			$body = $this->view->fetch('not_found.html', array('noFind' => $msg, 'nav' => $navigation));
-		}else{
-		   $body = $this->view->fetch('blog_detail.html', 
-				array(
-				'ind_posts' => $post,
-				'nav' => $navigation,
-				'tagline' => BLOG_TAGLINE,
-				'title' => BLOG_TITLE
-				));
-		}
-			
-		return $response->write($body);
-	}*/
+        return $response->write($body);
+    }
+	
+	public function job(Request $request, Response $response, $args)
+    {
+		$job = New Jobs;
+		$job = Jobs::all();
+		$body = $this->view->fetch('home_job.html', array('jItems' => $job));
+
+        return $response->write($body);
+    }
 }
 

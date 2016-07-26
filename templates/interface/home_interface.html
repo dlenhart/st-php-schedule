@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	<div id='jobs'><div id='loading' class='' style='color: white'><h3 style='color: yellow'>LOADING ...</h3></div></div>
+	
+	<div id='queue'><div id='loading2' class='' style='color: white'><h3 style='color: yellow'>LOADING ...</h3></div></div>
+	
+<script>
+(function(b){
+    b(document).ready(function()
+    {
+        b.ajaxSetup(
+        {
+            cache: false,
+            beforeSend: function() {
+				$('#loading2').show();
+                $('#loading').show();
+            },
+            complete: function() {
+                b('#jobs').show().fadeIn("slow");
+                b('#queue').show().fadeIn("slow");
+            },
+            success: function() {
+                $('#loading').hide();
+				$('#loading2').hide();
+                b('#jobs').show().fadeIn("slow");
+                b('#queue').show().fadeIn("slow");
+            }
+        });
+        var $container = b("#jobs");
+        var $container2 = b("#queue");
+        $container.load("/boxes/jobs").fadeIn("slow");
+        $container2.load("/boxes/queue").fadeIn("slow");
+        var refreshId = setInterval(function()
+        {
+            $container.load('/boxes/jobs').fadeIn("slow");
+            $container2.load('/boxes/queue').fadeIn("slow");
+        }, 5000);
+    });
+})(jQuery);</script>
+{% endblock %}

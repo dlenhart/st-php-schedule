@@ -56,13 +56,13 @@ class db
 		} 
     }
 	
-	//use update for Delete, or Update queries
+	//Update/delete data
     function updateData($query){
 		$queryEx = $this->db->prepare($query);		
 		return $queryEx->execute();
     }
     
-    //Insert/Update/Delete
+    //Insert data
     function execQuery($query, $data){
 		try {
 			$queryEx = $this->db->prepare($query);		
