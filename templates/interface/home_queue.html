@@ -2,9 +2,13 @@
 <div class="box_c"><div class="box_t">Queue Status:</div><div class="st_boxes">
 	<table class="table"><tr><td>JOB NUM</td><td>JOB_ID</td><td>PATH</td><td>IN QUE TIME</td><td>Actions</td></tr>
     {% for item in qItems %}
-        
-		<tr><td>{{ item.id }}</td><td>{{ item.job_id }}</td><td>{{ item.path }}</td><td>{{ item.in_que_time|date("m/d/Y H:i:s") }}</td><td><a class="btn btn-default btn-xs" alt="Put job on hold." href="#" role="button">Hold</a></td></tr>
-		
+	<tr>
+		<td>{{ item.id }}</td>
+		<td>{{ item.job_id }}</td>
+		<td>{{ item.path }}</td>
+		<td>{{ item.in_que_time|date("m/d/Y H:i:s") }}</td>
+		<td><a class="btn btn-default btn-xs" alt="Put job on hold." href="#" role="button">Hold</a></td>
+	</tr>
     {% else %}  
         <p style='color: red'>There are currently no items in the queue.</p>
     {% endfor %}
