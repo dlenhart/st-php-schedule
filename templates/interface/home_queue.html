@@ -1,16 +1,57 @@
 {% block content %}
 <div class="box_c"><div class="box_t">Queue Status:</div><div class="st_boxes">
-	<table class="table"><tr><td>JOB NUM</td><td>JOB_ID</td><td>PATH</td><td>IN QUE TIME</td><td>Actions</td></tr>
+	<table class="table"><tr><td>JOB NUM</td><td>JOB_ID</td><td>PATH</td><td>IN QUE TIME</td><td>STATUS</td><td>Actions</td></tr>
     {% for item in qItems %}
 	<tr>
 		<td>{{ item.id }}</td>
 		<td>{{ item.job_id }}</td>
 		<td>{{ item.path }}</td>
 		<td>{{ item.in_que_time|date("m/d/Y H:i:s") }}</td>
-		<td><a class="btn btn-default btn-xs" alt="Put job on hold." href="#" role="button">Hold</a></td>
+		<td>{{ item.hold }}</td>
+		<td>
+		{% if item.hold == 0 %}
+			<a class="btn btn-default btn-xs" alt="Run job." href="#" role="button" onclick="holdJob('{{ item.id }}', 1)">Run</a>
+		{% else %}
+			<a class="btn btn-danger btn-xs" alt="Put job on hold." href="#" role="button" onclick="holdJob('{{ item.id }}', 0)">Hold</a>
+		{% endif %}
+		<a class="btn btn-danger btn-xs" alt="Remove job from queue" href="#" role="button" onclick="deleteJobq('{{ item.id }}')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+		</td>
 	</tr>
     {% else %}  
         <p style='color: red'>There are currently no items in the queue.</p>
     {% endfor %}
 	</table></div></div>
+	<script>
+	//shouyld set this to hold/release jobs in queue.!
+		function holdJob ($jobnum, $flag) {
+			//alert($path);
+			if($jobnum === ""){
+				alert("data incorrect");
+			}else{
+				$.post("api/holdJob",
+					{ jobnum: $jobnum, hflag: $flag },
+					function(data, status){
+						//alert("Data: " + data + "\nStatus: " + status);
+						//reload queue status box on success
+						var $container2 = $("#queue");
+						$container2.load("/boxes/queue").fadeIn("slow");
+				});
+			}
+		}
+		
+		function deleteJobq (id) {
+			//alert("removing: " + id);
+			if(confirm('Are you sure you want to delete this Job?')){
+				$.post("api/deleteJobqueue",
+					{ jobnum: id },
+					function(data, status){
+						//alert("Data: " + data + "\nStatus: " + status);
+						var $container2 = $("#queue");
+						$container2.load("/boxes/queue").fadeIn("slow");
+					});
+			}else{
+				alert('Item not deleted!');
+			}
+		}
+	</script>
 {% endblock %}

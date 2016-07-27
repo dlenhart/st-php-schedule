@@ -35,16 +35,16 @@ function check(){
 		//Need to first check if the "In QUEUE" flag is set, this means its in the queue
 		if($in_queue != 0){
 			if( $r ) {
-				echo "executed - " . $job_name . "\n";
+				echo "Job hit the queue: " . $job_name . "\n";
 				$count = time();
 				echo $count . "\n";
 				if(DEBUG) $qlog->info('Job hit the queue: ' . $job_name . " : time: " . $count);
 				  
 				//Now last update is updating in table.  Need to add an entry to the QUE and update last run from there.				
-				$data = array(':jid' => $id, ':path' => $path, ':time' => $count);
+				$data = array(':jid' => $id, ':path' => $path, ':hold' => '1', ':time' => $count);
 				
 				//Add into QUEUE
-				$sql= 'INSERT INTO QUEUE (job_id, path, in_que_time) VALUES (:jid,:path,:time)';
+				$sql= 'INSERT INTO QUEUE (job_id, path, hold, in_que_time) VALUES (:jid,:path,:hold,:time)';
 				$db->execQuery($sql, $data);
 
 				//update status_int, prevents multiple entries into queue
@@ -57,8 +57,8 @@ function check(){
 				if(DEBUG) $qlog->info('NOT RUN - interval is ' . $interval . " minutes on JOB: " . $job_name . "\n");
 			}
 		} else { 
-			echo "Item is already in the queue\n"; 
-			if(DEBUG) $qlog->info('JOB ' . $job_name . " - already in QUEUE!\n");
+			echo "JOB " . $job_name . " - already in QUEUE!\n"; 
+			if(DEBUG) $qlog->info('JOB ' . $job_name . " - already in QUEUE!");
 		}
 	}
 	$db->closeDB();

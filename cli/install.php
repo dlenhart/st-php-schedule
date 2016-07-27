@@ -40,7 +40,7 @@ function create_db($namedb){
 	if(!$createTable){
 		echo $db->lastErrorMsg();
 	} else {
-		echo "Table articles has been created!\n";
+		echo "Table JOBS has been created!\n";
 	}
 
 	//Create Table
@@ -57,19 +57,19 @@ function create_db($namedb){
 	if(!$createJobs){
 		echo $db->lastErrorMsg();
 	} else {
-		echo "Table pages has been created!\n";
+		echo "Table QUEUE has been created!\n";
 	}
 	$count = time(); //enter current time for install
 	///Load a basic job for testing
 	$sql2 = "
 	INSERT INTO JOBS (id, last_run, interval, run_once, name, status, status_int, path) 
-	VALUES (1, '$count', '5', '0', 'job01', 'held', '1', 'c:\phpcli\jobs\job.php' );
+	VALUES (1, '$count', '5', '0', 'job01', 'held', '1', 'c:\phpcli\st-php-schedule\jobs\job.php' );
 	
 	INSERT INTO JOBS (id, last_run, interval, run_once, name, status, status_int, path) 
-	VALUES (2, '$count', '2', '0', 'job02', 'held', '1',  'c:\phpcli\jobs\job-email.php' );
+	VALUES (2, '$count', '2', '0', 'job02', 'held', '1',  'c:\phpcli\st-php-schedule\jobs\job.php' );
 	
 	INSERT INTO JOBS (id, last_run, interval, run_once, name, status, status_int, path) 
-	VALUES (3, '$count', '30', '0', 'job04', 'held', '1',  'c:\phpcli\jobs\job-hehe.php' );
+	VALUES (3, '$count', '30', '0', 'job04', 'held', '1',  'c:\phpcli\st-php-schedule\jobs\job-hehe.php' );
 	";
 
 	$ret = $db->exec($sql2);

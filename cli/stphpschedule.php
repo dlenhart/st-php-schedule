@@ -39,7 +39,7 @@ if (isset($argv[1])){
 			status();
 			break;
 		default:
-			echo "command not found.  type: php exec.php 'list' for a list of commands.";
+			echo "command not found.  type: php stphpschedule.php 'list' for a list of commands.";
 	}
 }else{ 
 	echo "No arguments, type: php stphpschedule.php 'list' for a list of commands.\n"; 
