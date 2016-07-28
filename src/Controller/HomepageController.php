@@ -87,5 +87,20 @@ class HomepageController extends AbstractController
 			'Content-Type', 'application/json');
 	   return $response;
 	}
+	
+	public function deleteJobGlobal(Request $request, Response $response, $args)
+	{
+		$allVars = (array)$request->getParsedBody();
+		$job = New Jobs;
+		$id = $allVars['id'];
+		$job = Jobs::find($id);
+		$job->delete();
+
+		$data = '{"Success": "' . $job->id . '"}';
+		$response->write($data);
+		$response = $response->withHeader(
+			'Content-Type', 'application/json');
+	   return $response;
+	}
 }
 
