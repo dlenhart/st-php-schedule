@@ -43,7 +43,7 @@ This is an experiment in creating a task scheduler / queue system in PHP and a l
 
 6.  Start PHP dev server on the public folder:  **php -S localhost:8000 -t public**.
 
-7.  Open a browser window to:  **http://localhost:8000".
+7.  Open a browser window to:  **http://localhost:8000**.
 
 8.  Via CLI, you can run various commands to check JOBS table ( if a job is ready to run ) or execute any job thats in the queue.  Type **path/to/php.exe -f stphpschedule.php list** for available commands.
 
@@ -53,7 +53,7 @@ This is an experiment in creating a task scheduler / queue system in PHP and a l
 
 #Notes
 
-If running on Windows, its helpful to have PHP set up in your environment variables so you can execute the CLI commands with **php** versus **path/to/php.exe".
+If running on Windows, its helpful to have PHP set up in your environment variables so you can execute the CLI commands with **php script.php** versus **path/to/php.exe script.php**.
 
 
 #Website
