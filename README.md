@@ -7,16 +7,33 @@ This is an experiment in creating a task scheduler / queue system in PHP and a l
 
 #Required
 
--PHP 5.5.12 + ( this is all I've tested on currently )
--PHP PDO extension
--Composer
--Python 3.5.2 +
+1.  PHP 5.5.12 + ( this is all I've tested on currently )
+
+2.  PHP PDO extension
+
+3.  Composer
+
+4.  Python 3.5.2 +
+
+#Slim App Dependencies
+
+-php >= 5.5.0
+
+-slim/slim ^3.4
+
+-slim/php-view ^2.0
+
+-slim/twig-view ^2.1
+
+-slim/http-cache ^0.3.0
+
+-illuminate/database *
 
 #Install
 
 1.  Download code.
 
-2.  Run the **builddb** command via cli e.g. **C:\wamp\bin\php\php5.5.12\php.exe -f C:\phpcli\st-php-schedule\cli\stphpschedule.php builddb**
+2.  Run the **builddb** command via CLI e.g. **php -f stphpschedule.php builddb**
 
 3.  If named the database durring **builddb** command, edit **config/config.php** with database name.
 
@@ -26,9 +43,17 @@ This is an experiment in creating a task scheduler / queue system in PHP and a l
 
 6.  Start PHP dev server on the public folder:  **php -S localhost:8000 -t public**.
 
-7.  Via CLI, you can run various commands to check JOBS table ( if a job is ready to run ) or execute any job thats in the queue.  Type **path/to/php.exe -f C:\phpcli\st-php-schedule\cli\stphpschedule.php list** for available commands.
+7.  Open a browser window to:  **http://localhost:8000".
 
-8.  Run **cli/listen.py** so the Jobs table is checked regularly and jobs are executed.
+8.  Via CLI, you can run various commands to check JOBS table ( if a job is ready to run ) or execute any job thats in the queue.  Type **path/to/php.exe -f stphpschedule.php list** for available commands.
+
+9.  Edit **cli/listen.py**, edit php path if necessary.
+
+10.  Run **cli/listen.py** so the Jobs table is checked regularly and jobs are executed.
+
+#Notes
+
+If running on Windows, its helpful to have PHP set up in your environment variables so you can execute the CLI commands with **php** versus **path/to/php.exe".
 
 
 #Website
