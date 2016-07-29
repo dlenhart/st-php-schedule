@@ -1,9 +1,15 @@
-st-phpschedule
+st-php-schedule
 ===============
 
-This is an experiment in creating a task scheduler / queue system in PHP and a little bit of Python.  This project was to help me think differently about creating applications and this app should not be used on any production systems.  There is no authentication and little thought of security.  The command line interface is literally me re-inventing the wheel.  There are frameworks such as Symphony that do this better!  The dashboard interface is built on Slim 3.  I have only tested this on Windows, but should work just fine on other systems.
+This is an experiment in creating a job/task scheduler / queue system in PHP and a little bit of Python.  This project was to help me think differently about creating applications and this app should not be used on any production systems.  There is no authentication and little thought of security.  The command line interface is literally me re-inventing the wheel.  There are frameworks such as Symphony that do this better!  The dashboard interface is built on Slim 3.  I have only tested this on Windows, but should work just fine on other systems.
 
 -This is an experiment, dont judge.
+
+#Features
+
+st-php-schedule has the ability to schedule jobs ( or php scripts - I'm calling them jobs/tasks ) at an interval between 1 minute to 60 minutes.  Using the dashboard, you can hold jobs globally, hold jobs in the queue, and release jobs.  You can also execute one time runs of a job/task ( if you don't want a job added to the queue at a regular interval ).  The dashboard is set to auto refresh Jobs & Queue views for quicker status.
+
+Currently I only have the system to execute PHP scripts.  To execute any job/task, I'm using the PHP **shell_exec()** function.  I have been able to make small modifications to run other scripts, e.g. **shell_exec("powershell .\path\to\script.ps1")**.
 
 #Required
 
