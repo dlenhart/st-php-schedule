@@ -28,7 +28,7 @@ function create_db($namedb){
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		last_run INT(11),
 		interval INT(11),
-		run_once INT(1),
+		global_hold INT(1),
 		name CHAR(50),
 		status CHAR(10),
 		status_int INT(1),
@@ -62,13 +62,13 @@ function create_db($namedb){
 	$count = time(); //enter current time for install
 	///Load a basic job for testing
 	$sql2 = "
-	INSERT INTO JOBS (id, last_run, interval, run_once, name, status, status_int, path) 
+	INSERT INTO JOBS (id, last_run, interval, global_hold, name, status, status_int, path) 
 	VALUES (1, '$count', '5', '0', 'job01', 'held', '1', 'c:\phpcli\st-php-schedule\jobs\job.php' );
 	
-	INSERT INTO JOBS (id, last_run, interval, run_once, name, status, status_int, path) 
+	INSERT INTO JOBS (id, last_run, interval, global_hold, name, status, status_int, path) 
 	VALUES (2, '$count', '2', '0', 'job02', 'held', '1',  'c:\phpcli\st-php-schedule\jobs\job.php' );
 	
-	INSERT INTO JOBS (id, last_run, interval, run_once, name, status, status_int, path) 
+	INSERT INTO JOBS (id, last_run, interval, global_hold, name, status, status_int, path) 
 	VALUES (3, '$count', '30', '0', 'job04', 'held', '1',  'c:\phpcli\st-php-schedule\jobs\job-hehe.php' );
 	";
 

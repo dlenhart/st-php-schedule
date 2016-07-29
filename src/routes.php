@@ -19,14 +19,17 @@ $app->post('/api/postQueue','stphpschedule\Controller\HomepageController:postQue
 //POST Hold/Run JOB in QUEUE.
 $app->post('/api/holdJob','stphpschedule\Controller\HomepageController:holdJob');
 
+//POST Hold/Run Globally in JOBS table.
+$app->post('/api/holdJobGlobal','stphpschedule\Controller\HomepageController:holdJobGlobal');
+
 //DELETE Job in QUEUE
 $app->post('/api/deleteJobqueue','stphpschedule\Controller\HomepageController:deleteJobq');
 
 //DELETE Job in JOBS table
 $app->post('/api/deleteJobGlobal','stphpschedule\Controller\HomepageController:deleteJobGlobal');
 
-//Add new job
-//$app->post()
+//CREATE new job in JOBS table
+$app->post('/api/createJobGlobal','stphpschedule\Controller\HomepageController:createJobGlobal');
 
 //Edit exsisting Job.
 //$app->post()

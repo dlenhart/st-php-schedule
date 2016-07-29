@@ -73,6 +73,23 @@ class HomepageController extends AbstractController
 	   return $response;
 	}
 	
+	public function holdJobGlobal(Request $request, Response $response, $args)
+	{
+		$allVars = (array)$request->getParsedBody();
+		$que = New Jobs;
+		$id = $allVars['id'];
+		$holdflag = $allVars['hflag'];
+		$que = Jobs::find($id);
+		$que->global_hold = $holdflag;
+		$que->save();
+
+		$data = '{"Success": "' . $que->id . '"}';
+		$response->write($data);
+		$response = $response->withHeader(
+			'Content-Type', 'application/json');
+	   return $response;
+	}
+	
 	public function deleteJobq(Request $request, Response $response, $args)
 	{
 		$allVars = (array)$request->getParsedBody();
@@ -97,6 +114,28 @@ class HomepageController extends AbstractController
 		$job->delete();
 
 		$data = '{"Success": "' . $job->id . '"}';
+		$response->write($data);
+		$response = $response->withHeader(
+			'Content-Type', 'application/json');
+	   return $response;
+	}
+	
+	public function createJobGlobal(Request $request, Response $response, $args)
+	{
+		$allVars = (array)$request->getParsedBody();
+		$job = New Jobs;
+		$time = time();
+		
+		$job->name = $allVars['name'];
+		$job->path = $allVars['path'];
+		$job->interval = $allVars['interval'];
+		//since this is new job, set last run to current date.
+		$job->last_run = $time;
+		$job->status_int = 1;
+		$job->global_hold = $allVars['global'];
+		$job->save();
+
+		$data = '{"Success": "' . $job->name . '"}';
 		$response->write($data);
 		$response = $response->withHeader(
 			'Content-Type', 'application/json');
