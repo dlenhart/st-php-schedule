@@ -13,16 +13,16 @@
         {
             cache: false,
             beforeSend: function() {
-				$('#loading2').show();
-                $('#loading').show();
+				b('#loading2').show();
+                b('#loading').show();
             },
             complete: function() {
                 b('#jobs').show().fadeIn("slow");
                 b('#queue').show().fadeIn("slow");
             },
             success: function() {
-                $('#loading').hide();
-				$('#loading2').hide();
+                b('#loading').hide();
+				b('#loading2').hide();
                 b('#jobs').show().fadeIn("slow");
                 b('#queue').show().fadeIn("slow");
             }
