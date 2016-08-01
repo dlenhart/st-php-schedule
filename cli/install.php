@@ -60,16 +60,20 @@ function create_db($namedb){
 		echo "Table QUEUE has been created!\n";
 	}
 	$count = time(); //enter current time for install
-	///Load a basic job for testing
+	///Load a basic jobs for testing
+	
+	//use realpath so no manual editing of paths is needed for these inserts
+	$path = realpath(__dir__ . '/..');
+	
 	$sql2 = "
 	INSERT INTO JOBS (id, last_run, interval, global_hold, name, status, status_int, path) 
-	VALUES (1, '$count', '5', '0', 'job01', 'held', '1', 'c:\phpcli\st-php-schedule\jobs\job.php' );
+	VALUES (1, '$count', '5', '0', 'job01', 'held', '1', '$path\jobs\job.php' );
 	
 	INSERT INTO JOBS (id, last_run, interval, global_hold, name, status, status_int, path) 
-	VALUES (2, '$count', '2', '0', 'job02', 'held', '1',  'c:\phpcli\st-php-schedule\jobs\job.php' );
+	VALUES (2, '$count', '2', '0', 'job02', 'held', '1',  '$path\jobs\job.php' );
 	
 	INSERT INTO JOBS (id, last_run, interval, global_hold, name, status, status_int, path) 
-	VALUES (3, '$count', '30', '0', 'job04', 'held', '1',  'c:\phpcli\st-php-schedule\jobs\job-hehe.php' );
+	VALUES (3, '$count', '30', '0', 'job04', 'held', '1',  '$path\jobs\job-email.php' );
 	";
 
 	$ret = $db->exec($sql2);
