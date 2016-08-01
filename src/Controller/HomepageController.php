@@ -51,9 +51,8 @@ class HomepageController extends AbstractController
 
 		$data = '{"Success": "' . $que->id . '"}';
 		$response->write($data);
-		$response = $response->withHeader(
-			'Content-Type', 'application/json');
-	   return $response;
+		$response = $response->withHeader('Content-Type', 'application/json');
+		return $response;
 	}
 	
 	public function holdJob(Request $request, Response $response, $args)
@@ -68,9 +67,8 @@ class HomepageController extends AbstractController
 
 		$data = '{"Success": "' . $que->id . '"}';
 		$response->write($data);
-		$response = $response->withHeader(
-			'Content-Type', 'application/json');
-	   return $response;
+		$response = $response->withHeader('Content-Type', 'application/json');
+		return $response;
 	}
 	
 	public function holdJobGlobal(Request $request, Response $response, $args)
@@ -85,9 +83,8 @@ class HomepageController extends AbstractController
 
 		$data = '{"Success": "' . $que->id . '"}';
 		$response->write($data);
-		$response = $response->withHeader(
-			'Content-Type', 'application/json');
-	   return $response;
+		$response = $response->withHeader('Content-Type', 'application/json');
+		return $response;
 	}
 	
 	public function deleteJobq(Request $request, Response $response, $args)
@@ -100,9 +97,8 @@ class HomepageController extends AbstractController
 
 		$data = '{"Success": "' . $que->id . '"}';
 		$response->write($data);
-		$response = $response->withHeader(
-			'Content-Type', 'application/json');
-	   return $response;
+		$response = $response->withHeader('Content-Type', 'application/json');
+		return $response;
 	}
 	
 	public function deleteJobGlobal(Request $request, Response $response, $args)
@@ -115,9 +111,8 @@ class HomepageController extends AbstractController
 
 		$data = '{"Success": "' . $job->id . '"}';
 		$response->write($data);
-		$response = $response->withHeader(
-			'Content-Type', 'application/json');
-	   return $response;
+		$response = $response->withHeader('Content-Type', 'application/json');
+		return $response;
 	}
 	
 	public function createJobGlobal(Request $request, Response $response, $args)
@@ -137,9 +132,8 @@ class HomepageController extends AbstractController
 
 		$data = '{"Success": "' . $job->name . '"}';
 		$response->write($data);
-		$response = $response->withHeader(
-			'Content-Type', 'application/json');
-	   return $response;
+		$response = $response->withHeader('Content-Type', 'application/json');
+		return $response;
 	}
 }
 
