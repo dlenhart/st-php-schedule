@@ -14,27 +14,28 @@
 		{% endif %}
 		<td>
 		{% if item.hold == 0 %}
-			<a class="btn btn-default btn-xs" alt="Run job." href="#" role="button" onclick="holdJob('{{ item.id }}', 1)">Run</a>
+			<a class="btn btn-default btn-xs" alt="Run job." href="#" role="button" onclick="holdJob('{{ item.id }}', 1)"><span id="runSpin{{ item.id }}" class="glyphicon glyphicon-refresh spinning"></span> Run</a>
 		{% else %}
-			<a class="btn btn-danger btn-xs" alt="Put job on hold." href="#" role="button" onclick="holdJob('{{ item.id }}', 0)">Hold</a>
+			<a class="btn btn-danger btn-xs" alt="Put job on hold." href="#" role="button" onclick="holdJob('{{ item.id }}', 0)"><span id="runSpin{{ item.id }}" class="glyphicon glyphicon-refresh spinning"></span> Hold</a>
 		{% endif %}
-		<a class="btn btn-danger btn-xs" alt="Remove job from queue" href="#" role="button" onclick="deleteJobq('{{ item.id }}')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+		<a class="btn btn-danger btn-xs" alt="Remove job from queue" href="#" role="button" onclick="deleteJobq('{{ item.id }}')"><span class="glyphicon glyphicon-remove" aria-hidden="true"> <span id="delSpin{{ item.id }}" class="glyphicon glyphicon-refresh spinning"></span> </span></a>
 		</td>
 	</tr>
     {% else %}  
         <p style='color: red'>There are currently no items in the queue.</p>
     {% endfor %}
-	</table></div></div>
+	</table></div>
+</div>
 	<script>
-	//shouyld set this to hold/release jobs in queue.!
 		function holdJob ($jobnum, $flag) {
+			document.getElementById('runSpin' + $jobnum).style.display = 'block';
 			if($jobnum === ""){
 				alert("data incorrect");
 			}else{
 				$.post("api/holdJob",
 					{ jobnum: $jobnum, hflag: $flag },
 					function(data, status){
-						//reload queue status box on success
+						document.getElementById('runSpin' + $jobnum).style.display = 'none';
 						var $container2 = $("#queue");
 						$container2.load("/boxes/queue").fadeIn("slow");
 				});
@@ -42,11 +43,12 @@
 		}
 		
 		function deleteJobq (id) {
+			document.getElementById('delSpin' + id).style.display = 'block';
 			if(confirm('Are you sure you want to delete this Job? This will remove the job from the QUEUE!')){
 				$.post("api/deleteJobqueue",
 					{ jobnum: id },
 					function(data, status){
-						//alert("Data: " + data + "\nStatus: " + status);
+						document.getElementById('delSpin' + id).style.display = 'none';
 						var $container2 = $("#queue");
 						$container2.load("/boxes/queue").fadeIn("slow");
 					});

@@ -64,7 +64,10 @@ function check(){
 					echo "JOB " . $job_name . " - already in QUEUE!\n"; 
 					if(DEBUG) $qlog->info('JOB ' . $job_name . " - already in QUEUE!");
 				}
-			} else { echo "JOB " . $job_name . " is HELD globally!\n"; }
+			} else { 
+				echo "JOB " . $job_name . " is HELD globally!\n";
+				if(DEBUG) $qlog->info("JOB " . $job_name . " is HELD globally!\n");
+			}
 		}
 	} else { echo "There are no JOBS configured!"; }
 	$db->closeDB();

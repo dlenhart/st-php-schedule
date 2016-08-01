@@ -62,7 +62,7 @@ Author URI: http://www.drewlenhart.com
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<button id="btn-update-product" type="button" onclick="newJob()" class="btn btn-primary" data-dismiss="modal">Save</button>
+		<button id="btn-update-product" type="button" onclick="newJob()" class="btn btn-primary" data-dismiss=""><span id="saveSpin" class="glyphicon glyphicon-refresh spinning"></span> Save</button>
       </div>
     </div>
   </div>
@@ -73,19 +73,24 @@ Author URI: http://www.drewlenhart.com
 			var path = $('#path').val();
 			var interval = $("#interval option:selected").text();
 			var ghold = $("#status_int option:selected").val();
+			//spinner
+			document.getElementById('saveSpin').style.display = 'block';
 			
 			if(name === ""|| path === ""){
 				$('#errmsg').html('Fields cannot be blank!');
+				document.getElementById('saveSpin').style.display = 'none';
 				$('#myModal').modal({'backdrop': 'static'});
 			}else{
 				var hold = 1;
 				$.post("api/createJobGlobal",
 					{ name: name, path: path, interval: interval, global: ghold },
 					function(data, status){
+						$('#myModal').modal('hide');
+						document.getElementById('saveSpin').style.display = 'none';
 						var $container = $("#jobs");
 						$container.load("/boxes/jobs").fadeIn("slow");
 				});
-				alert(name + path + interval + status);
+				//alert(name + path + interval + status);
 			}
 		}
 </script>

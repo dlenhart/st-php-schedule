@@ -1,9 +1,9 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-	<div id='jobs'><div id='loading' class='' style='color: white'><h3 style='color: yellow'>LOADING ...</h3></div></div>
+	<div id='jobs'><div id='loading' class='' style='color: white'><h3 style='color: yellow'>LOADING JOB LIST ...</h3></div></div>
 	
-	<div id='queue'><div id='loading2' class='' style='color: white'><h3 style='color: yellow'>LOADING ...</h3></div></div>
+	<div id='queue'><div id='loading2' class='' style='color: white'><h3 style='color: yellow'>LOADING QUEUE...</h3></div></div>
 	
 <script>
 (function(b){
@@ -35,7 +35,7 @@
         {
             $container.load('/boxes/jobs').fadeIn("slow");
             $container2.load('/boxes/queue').fadeIn("slow");
-        }, 5000);
+        }, 5000);  //refresh containers every 5 seconds
     });
 })(jQuery);</script>
 {% endblock %}
