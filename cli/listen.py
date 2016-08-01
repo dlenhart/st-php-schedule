@@ -1,3 +1,8 @@
+##Author:   Drew D. Lenhart
+##Desc:     Runs stphpschedule commands in a loop
+## **Make sure your php path/to/executable is correct if PHP is not in environment variables (Windows).
+## e.g.  cmd = "c:\path\to\php.exe -f stphpschedule.php check"
+
 import subprocess
 import time 
 
