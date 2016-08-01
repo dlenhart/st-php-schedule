@@ -18,7 +18,6 @@ class db
         try {
 			$conn = "sqlite:{$sqlitedb}";
 			$this->db = new PDO($conn);
- 
         } catch(PDOException $e) {
             echo $e->getMessage(); exit(1);
         }
