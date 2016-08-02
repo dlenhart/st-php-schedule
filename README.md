@@ -63,7 +63,7 @@ If running on Windows, its helpful to have PHP set up in your environment variab
 
 
 #Website
-www.drewlenhart.com
+http://snowytech.com/drewlenhart/blog/i-made-a-php-task-scheduler
 
 #License
 MIT License
