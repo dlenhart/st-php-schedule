@@ -60,6 +60,8 @@ function execute_queue(){
 }
 
 function executeRem($url) {
+	//This is limiting the execution to PHP scripts only
+	//TODO: store command in db ( for the ability to execute other kinds of scripts )
 	$output = shell_exec('php -f ' . $url);
 	return $output;
 }
