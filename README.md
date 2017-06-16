@@ -5,14 +5,14 @@ This is an experiment in creating a job/task scheduler / queue system in PHP and
 
 -This is an experiment, dont judge.
 
-#Features
-
+Features
+----
 st-php-schedule has the ability to schedule jobs ( or php scripts - I'm calling them jobs/tasks ) at an interval between 1 minute to 60 minutes.  Using the dashboard, you can hold jobs globally, hold jobs in the queue, and release jobs.  You can also execute one time runs of a job/task ( if you don't want a job added to the queue at a regular interval ).  The dashboard is set to auto refresh Jobs & Queue views for quicker status.
 
 Currently I only have the system to execute PHP scripts.  To execute any job/task, I'm using the PHP **shell_exec()** function.  I have been able to make small modifications to run other scripts, e.g. **shell_exec("powershell .\path\to\script.ps1")**.
 
-#Required
-
+Required
+----
 1.  PHP 5.5.12 + ( this is all I've tested on currently )
 
 2.  PHP PDO extension
@@ -21,8 +21,8 @@ Currently I only have the system to execute PHP scripts.  To execute any job/tas
 
 4.  Python 3.5.2 +
 
-#Slim App Dependencies
-
+Slim App Dependencies
+----
 -php >= 5.5.0
 
 -slim/slim ^3.4
@@ -35,8 +35,8 @@ Currently I only have the system to execute PHP scripts.  To execute any job/tas
 
 -illuminate/database *
 
-#Install
-
+Install
+----
 1.  Download code.
 
 2.  Run the **builddb** command via CLI e.g. **php -f stphpschedule.php builddb**
@@ -57,15 +57,17 @@ Currently I only have the system to execute PHP scripts.  To execute any job/tas
 
 10.  Run **cli/listen.py** so the Jobs table is checked regularly and jobs are executed.
 
-#Notes
-
+Notes
+----
 If running on Windows, its helpful to have PHP set up in your environment variables so you can execute the CLI commands with **php script.php** versus **path/to/php.exe script.php**.
 
 
-#Website
-http://snowytech.com/drewlenhart/blog/i-made-a-php-task-scheduler
+Website
+----
+http://www.drewlenhart.com/blog/i-made-a-php-task-scheduler
 
-#License
+License
+----
 MIT License
 
 Copyright (c) 2016 Drew D. Lenhart
